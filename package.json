@@ -5,7 +5,8 @@
   "author": "Grzegorz Lipecki <grzegorz.lipecki@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start-demo1": "node_modules/.bin/http-server backbone-sample-1 -p 9001"
+    "start-demo1": "node_modules/.bin/http-server backbone-sample-1 -p 9001",
+    "start-demo2": "node_modules/.bin/http-server backbone-sample-2 -p 9002"
   },
   "dependencies": {
     "http-server": "^0.9.0"

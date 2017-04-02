@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>AngularSample</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+<div>
+  <div>Przykładowe uruchomienie wniosku</div>
+  <pre>window.FormWrapper.create(window.document.getElementById('wniosek'), 'wniosek_demo');</pre>
+  <div><button onclick="demo()">Wywołaj demo</button></div>
+</div>
+<hr/>
+<div id="wniosek"></div>
+<script type="text/javascript">
+
+  window['demo'] = function () {
+    var createForm = function () {
+      window.FormWrapper.create(window.document.getElementById('wniosek'), 'wniosek_demo');
+    };
+
+    if (window.formsScriptLoaded === true) {
+      createForm();
+    } else {
+      window.formsScriptLoaded = function () {
+        createForm();
+      }
+    }
+  }
+
+</script>
+</body>
+</html>
