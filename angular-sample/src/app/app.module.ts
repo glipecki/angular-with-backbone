@@ -15,7 +15,11 @@ import {FormWrapper} from '../form-wrapper/form-wrapper';
     HttpModule
   ],
   providers: [
-    {provide: FormWrapper, useFactory: () => window['FormWrapper']}
+    {
+      provide: FormWrapper, useFactory: function () {
+      return window['FormWrapper'];
+    }
+    }
   ],
   bootstrap: [AppComponent]
 })

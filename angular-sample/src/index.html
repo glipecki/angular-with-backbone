@@ -11,8 +11,9 @@
 <body>
 <div>
   <div>Przykładowe uruchomienie wniosku</div>
-  <pre>window.FormWrapper.create(window.document.getElementById('wniosek'), 'wniosek_demo');</pre>
-  <div><button onclick="demo()">Wywołaj demo</button></div>
+<pre>var form = window.FormWrapper.create(window.document.getElementById('wniosek'), 'Testowy wniosek');
+form.on('demo', function(payload) { alert(JSON.stringify(payload)); });</pre>
+  <div><button onclick="demo()">Uruchom wniosek demo</button></div>
 </div>
 <hr/>
 <div id="wniosek"></div>
@@ -20,7 +21,10 @@
 
   window['demo'] = function () {
     var createForm = function () {
-      window.FormWrapper.create(window.document.getElementById('wniosek'), 'wniosek_demo');
+      var formWrapper = window.FormWrapper.create(window.document.getElementById('wniosek'), 'Testowy wniosek');
+      formWrapper.on('demo', function(payload) {
+          alert(JSON.stringify(payload));
+      });
     };
 
     if (window.formsScriptLoaded === true) {

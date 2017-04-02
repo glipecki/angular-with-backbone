@@ -8,6 +8,7 @@ export class FormWrapper {
   static initialized = false;
 
   private moduleRef: NgModuleRef<any>;
+  private eventListeners = {};
   config: FormWrapperConfig = {};
 
   constructor(private module: Type<any>) {
@@ -40,6 +41,25 @@ export class FormWrapper {
     app.then(res => this.moduleRef = res);
 
     return this;
+  }
+
+  on(event: string, callback: any) {
+    if (this.eventListeners[event] === undefined) {
+      this.eventListeners[event] = [];
+    }
+    this.eventListeners[event].push(callback);
+  }
+
+  off(event: string, callback: any) {
+    if (this.eventListeners[event] !== undefined && this.eventListeners[event].indexOf(callback) >= 0) {
+      this.eventListeners[event].removeAt(this.eventListeners[event].indexOf(callback));
+    }
+  }
+
+  event(event: string, payload: any) {
+    if (this.eventListeners[event]) {
+      this.eventListeners[event].forEach(listener => listener(payload));
+    }
   }
 
 }
