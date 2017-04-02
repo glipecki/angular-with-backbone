@@ -5,6 +5,10 @@ import {HttpModule} from '@angular/http';
 import {AppComponent} from './app.component';
 import {FormWrapper} from '../form-wrapper/form-wrapper';
 
+export function formWrapperFactory() {
+  return window['FormWrapper'];
+};
+
 @NgModule({
   declarations: [
     AppComponent
@@ -16,9 +20,7 @@ import {FormWrapper} from '../form-wrapper/form-wrapper';
   ],
   providers: [
     {
-      provide: FormWrapper, useFactory: function () {
-      return window['FormWrapper'];
-    }
+      provide: FormWrapper, useFactory: formWrapperFactory
     }
   ],
   bootstrap: [AppComponent]
