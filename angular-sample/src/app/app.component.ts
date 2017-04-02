@@ -10,13 +10,13 @@ import {FormWrapper} from '../form-wrapper/form-wrapper';
 })
 export class AppComponent {
 
-  private formName: string;
+  formName: string;
 
   constructor(private formWrapper: FormWrapper) {
     this.formName = formWrapper.config.formName;
   }
 
-  private demoEvent() {
+  demoEvent() {
     this.formWrapper.event('demo', {
       form: this.formName
     });
