@@ -28,17 +28,23 @@ export class FormWrapper {
     }
 
     // assure only one instance on page and initialize
-    if (document.getElementsByTagName(FormWrapper.APP_ROOT_ELEMENT).length > 0) {
-      throw new Error('FormWrapper already exists in DOM tree');
-    }
-    element.appendChild(document.createElement(FormWrapper.APP_ROOT_ELEMENT));
+    // if (document.getElementsByTagName(FormWrapper.APP_ROOT_ELEMENT).length > 0) {
+      // throw new Error('FormWrapper already exists in DOM tree');
+    // }
+    FormWrapper.APP_ROOT_ELEMENT
+    var el = document.createElement('div');
+    el.setAttribute(FormWrapper.APP_ROOT_ELEMENT, '');
+    element.appendChild(el);
 
     // store passed configuration
     this.config.formName = formName;
 
     // bootstrap application
     let app = platformBrowserDynamic().bootstrapModule(this.module);
-    app.then(res => this.moduleRef = res);
+    app.then(res => {
+      this.moduleRef = res
+      el.removeAttribute(FormWrapper.APP_ROOT_ELEMENT);
+    });
 
     return this;
   }

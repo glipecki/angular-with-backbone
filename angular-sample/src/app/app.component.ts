@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {FormWrapper} from '../form-wrapper/form-wrapper';
 
 @Component({
-  selector: 'app-root',
+  selector: '[app-root]',
   template: `
         <div>Demo wniosku: {{formName}}</div>
         <div><button (click)="demoEvent()">Demo event</button> </div>
